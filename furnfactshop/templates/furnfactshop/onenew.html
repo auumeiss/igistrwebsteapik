@@ -1,0 +1,20 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        {{ onenew.title }}
+      </h1>
+
+
+      <p>
+            <h3>{{ onenew.anons }}</h3>
+            <h6>{{ onenew.date }}</h6>
+            <p>{{ onenew.full_text }}</p>
+            <img src="{{ onenew.image.url }}"></img>
+      </p>
+
+    </div>
+{% endblock %}
+
+{% block title %}{% endblock %}

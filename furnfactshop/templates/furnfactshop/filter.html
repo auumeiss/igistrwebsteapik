@@ -1,0 +1,36 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>Поиск по предметам мебели</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Фильтр</button>
+    </form>
+
+      {% if results %}
+        <h2>Результаты поиска</h2>
+        <ul>
+            {% for item in results %}
+            <div class="alert">
+            <h3>Товар: {{ item.name }}, код: {{ item.code }}</h3>
+            <p>Модель: {{ item.model }}, вид: {{ item.species }}</p>
+            <p>Цена:{{ item.price }}</p>
+            <p>В производстве: {% if item.isSelling %}да{% else %}нет{% endif %} компанией {{ item.company.companyname }}</p>
+                <img src="{{ item.image.url }}"></img><br><br>
+            {% if is_customer %}
+                {% if item.isSelling %}
+        <a href="{% url 'add_to_cart' item.id %}" class="btn btn-warning">В заказ</a>
+      {% endif %}
+                {% endif %}
+            </div>
+            {% empty %}
+                <li>Ничего не найдено</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block title %}Фильтр{% endblock %}

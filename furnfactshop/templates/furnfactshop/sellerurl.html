@@ -1,0 +1,17 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        Товары
+      </h1>
+      <p>
+        {% for order in orders %}
+                <h2>Заказ {{ order.user.username }}, колво: {{ order.count }}, {{ order.object.name }} {{ order.object.model }} {{ order.object.species }}</h2>
+        {% endfor %}
+      </p>
+
+    </div>
+{% endblock %}
+
+{% block title %}Товары{% endblock %}

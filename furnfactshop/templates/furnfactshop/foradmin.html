@@ -1,0 +1,29 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        Admin
+      </h1>
+
+      <p>
+            <h1>Мебель с наибольшим спросом</h1>
+    <p>Наибольший спрос у мебели: {{ mebel_with_highest_demand.object__name }} ({{ mebel_with_highest_demand.total_count }} штук)</p>
+      </p>
+
+    <ul>
+        {% for item in aggregated_items %}
+           <p> {{ item.object__name }} ({{ item.total_count }} продаж)</p>
+        {% empty %}
+            Нет данных о продажах
+        {% endfor %}
+                <h1>Список заказчиков по городам</h1>
+        {% for item in customers_by_city %}
+            <p>{{ item.city }} : {{ item.name }}</p>
+        {% endfor %}
+    </ul>
+                {{ graph|safe }}
+    </div>
+{% endblock %}
+
+{% block title %}Admin{% endblock %}

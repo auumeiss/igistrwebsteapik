@@ -1,0 +1,25 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        Главная страница
+      </h1>
+
+      <p>
+          <h2>User Timezone: {{ user_tz }}</h2>
+            <h2>Current Time: {{ current_time }}</h2>
+        {% for new in news %}
+            <div class="alert">
+            <h3>{{ new.title }}</h3>
+            <p>{{ new.anons }}</p>
+            <img src="{{ new.image.url }}"></img><br><br>
+            <a href="{% url 'onenew' new.id %}" class="btn btn-warning">Подробнее</a>
+            </div>
+        {% endfor %}
+      </p>
+
+    </div>
+{% endblock %}
+
+{% block title %}Main page{% endblock %}

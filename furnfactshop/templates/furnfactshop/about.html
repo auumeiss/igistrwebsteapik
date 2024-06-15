@@ -1,0 +1,23 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+<div class="features">
+    <h1>О нас</h1>
+  <body>
+    <h1>О компании</h1>
+    <img src="{{ info.logo.url }}" alt="Логотип компании" width="200">
+    <p>{{ info.aboutcompany }}</p>
+    <h2>Реквизиты</h2>
+    <p>{{ info.requisites }}</p>
+    {% if info.video %}
+    <h2>Видео</h2>
+    <video width="600" controls>
+        <source src="{{ info.video.url }}" type="video/mp4">
+        Ваш браузер не поддерживает тег видео.
+    </video>
+    {% endif %}
+    </body>
+  </div>
+{% endblock %}
+
+{% block title %}О нас{% endblock %}

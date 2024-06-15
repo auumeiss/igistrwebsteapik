@@ -1,0 +1,23 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        Новости
+      </h1>
+
+      <p>
+        {% for new in news %}
+            <div class="alert">
+            <h3>{{ new.title }}</h3>
+            <p>{{ new.anons }}</p>
+            <img src="{{ new.image.url }}"></img><br><br>
+            <a href="{% url 'onenew' new.id %}" class="btn btn-warning">Подробнее</a>
+            </div>
+        {% endfor %}
+      </p>
+
+    </div>
+{% endblock %}
+
+{% block title %}Новости{% endblock %}

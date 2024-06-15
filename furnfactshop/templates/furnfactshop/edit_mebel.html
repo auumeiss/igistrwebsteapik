@@ -1,0 +1,12 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+<div class="container">
+    <h1>Редактировать мебель</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

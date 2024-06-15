@@ -1,0 +1,29 @@
+{% extends 'furnfactshop/layout.html' %}
+
+{% block urlContent %}
+    <div class="features">
+      <h1>
+        Мебель
+      </h1>
+
+      <p>
+        {% for m in mebels %}
+        <div class="alert">
+        <h3>Товар: {{ m.name }}, код: {{ m.code }}</h3>
+        <p>Модель: {{ m.model }}, вид: {{ m.species }}</p>
+        <p>Цена:{{ m.price }}</p>
+        <p>В производстве: {% if m.isSelling %}да{% else %}нет{% endif %} компанией {{ m.company.companyname }}</p>
+       <img src="{{ m.image.url }}"></img><br><br>
+      {% if is_customer %}
+      {% if m.isSelling %}
+        <a href="{% url 'add_to_cart' m.id %}" class="btn btn-warning">В заказ</a>
+      {% endif %}
+      {% endif %}
+        </div>
+        {% endfor %}
+      </p>
+
+    </div>
+{% endblock %}
+
+{% block title %}Мебель{% endblock %}
